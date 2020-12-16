@@ -1,0 +1,26 @@
+<h1>Nuevo Ticket</h1>
+
+<p> <%= notice%> </p>
+
+<%= valores = Intere.where(id: params[:format]).select(:carrete_id, :user_id).take %>
+
+<%= form_with(model: @ticket, method: :post) do |form|%>
+
+    <div class='field'>
+        <%= if valores
+            form.hidden_field :user_id, :value => valores.user_id
+        end   %>
+    </div>
+
+    <div class='field'>
+        <%= if valores
+            form.hidden_field :carrete_id, :value => valores.carrete_id
+        end   %>
+    </div>
+
+    <div class='action'>
+        <%=form.submit %>
+
+    </div>
+
+<% end %>

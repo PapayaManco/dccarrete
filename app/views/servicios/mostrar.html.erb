@@ -1,0 +1,47 @@
+<%= render "static_pages/layout" %>
+
+<body>
+  <br>
+	<h1 class="title" align="center">Mis Servicios</h1>
+  <div class="columns">
+    <div class="column">
+
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Nombre">Nombre</abbr></th>
+            <th><abbr title="Categoría">Categoría</abbr></th>
+            <th><abbr title="Ofrecido por">Ofrecido por</abbr></th>
+            <th><abbr title="Estado">Estado</abbr></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <%- Servicio.where(user_id: current_user.id).each do |s|%>
+          <tr>
+            <td><%= s.nombre %></td>
+            <td><%= s.categoria %></td>
+            <td><%= s.user_id %></td>
+            <td>
+            <% if s.approved == false %>
+            <%= "Pendiente" %>
+            <%- end %>
+            <% if s.approved == true %>
+            <%= "Aceptado" %>
+            <%- end %>
+            </td>
+          </tr>
+          <%- end %>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</body>
+
+<!--
+<%- Servicio.where(user_id: current_user.id).each do |s|%> 
+<%= s.nombre + "," %>
+<%- end %>
+-->

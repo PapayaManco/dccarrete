@@ -1,0 +1,31 @@
+<%= render "static_pages/layout" %>
+
+<body>
+  <br>
+	<h1 class="title" align="center">Mis Tickets</h1>
+  <div class="columns">
+    <div class="column">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Nombre">Nombre Carrete</abbr></th>
+            <th><abbr title="Direccion">Direccion</abbr></th>
+            <th><abbr title="Maximo Asistentes">Codigo</abbr></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% Ticket.where(user_id: current_user.id).each do |ticket| %>
+          <%-  s = Carrete.where(id: ticket.carrete_id).take%>
+            <td><%= s.nombre %></td>
+            <td><%= s.direccion %></td>
+            <td><%= ticket.codigo %></td>
+          </tr>
+          <%- end %>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</body>

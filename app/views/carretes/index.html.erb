@@ -1,0 +1,58 @@
+<%= render "static_pages/layout" %>
+
+<body>
+  <br>
+	<h1 class="title" align="center">Organizar Carretes</h1>
+	
+  <section class="section">
+        <div class="container has-text-centered">
+            <div class="columns is-centered" style="padding: 2rem">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-2by1">
+                                <img src="https://video-images.vice.com/_uncategorized/1510345063281-unnamed.jpeg" alt="Carretes imagen">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Organizar un Carrete</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                ¿Tienes ganas de dar la mejor fiesta de tu vida? Esta es la instancia perfecta para ofrecer un carrete al mundo!.
+                            </div>
+                            <button class="button is-dark" onclick="location.href='<%=carretes_new_url %>'">Organizar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-2by1">
+                                <img src="https://www.synergic.cl/img/hero-single-img-1.svg" alt="Placeholder image" >
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Mis carretes ofrecidos</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Revisa tus carretes! <br>Ve quienes quieren entrar a tu carrete y cuan intereseados estan!.
+                            </div>
+                            <button class="button is-dark" onclick="location.href='<%=carretes_mostrar_url %>'">Mis carretes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+
+</body>

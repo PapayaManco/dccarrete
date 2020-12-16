@@ -1,0 +1,61 @@
+<%= render "static_pages/layout" %>
+
+<body>
+<br>
+	<h1 class="title" align="center">Postular un nuevo servicio</h1>
+<section class="section">
+
+    <p> <%= notice%> </p>
+
+        <p class="help is-danger"><%= form_with(model: @servicio, method: :post) do |form| %>
+        </p>
+
+            <div class="field">
+                <label class="label"><%= form.label :nombre %></label>
+                <div class="control">
+                        <%= form.text_field :nombre, autofocus: true, autocomplete: "nombre", class: "input" %>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Teléfono</label>
+                    <div class="control">
+                    <input class="input" type="tel" placeholder="Tu número celular">
+                    </p>
+            </div>
+
+            <div class="field">
+                <label class="label"><%= form.label :descripcion %></label>
+                <div class="control">
+                        <%= form.text_field :descripcion, autofocus: true, autocomplete: "descripcion", class: "input" %>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label"><%=form.label :categoria%></label>
+                <div class="control">
+                    <div class="select">
+                        <%= form.select :categoria, ['Comidas', 'Bebidas', 'Música', 'Limpieza']%>
+                    </div>
+                    <a class="help" href=<%=new_user_registration_path %>>Si aún no te registras, dirígete aquí</a>
+                     
+                </div>
+            </div>
+
+            <div class='field'>
+                <%=form.hidden_field :user_id, :value => current_user.id %>
+            </div>
+
+
+            <div class="field is-horizontal">
+            <div class="field-label">
+                
+            </div>
+            <div class='action'>
+                <%=form.submit%>
+            </div>
+            
+            <% end %>
+    
+</section>
+</body>

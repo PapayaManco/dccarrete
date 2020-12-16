@@ -1,0 +1,67 @@
+<%= render "layout" %>
+<body>
+<h1 class="title" align="center">Mi Perfil</h1>
+	
+<div class="columns">
+  <div class="column is-one-third">
+    <div class='card equal-height'>
+        <div class="card-image has-text-centered">
+        <br>
+        <figure class="image is-128x128 is-inline-block" >
+            <img class="is-rounded" src="https://img.icons8.com/color/452/darth-vader.png">
+        </figure>
+        <br>
+        <h2 class="subtitle is-2"><%= current_user.username %></h2> 
+        <br>           
+        </div>
+    </div>
+  </div>
+    
+  <div class="column">
+    <div class='card equal-height'>
+        <div class="content">
+            <ol type="1">
+            <p class="subtitle is-5">Nombre: <%= current_user.username %></p>
+            </ol>
+            <ol type="1">
+            <p class="subtitle is-5">Correo: <%= current_user.email %></p>
+            </ol>
+            <ol type="1">
+            <p class="subtitle is-5">Comuna:</p>
+            </ol>
+            <ol type="1">
+            <p class="subtitle is-5">Carretes Creados:</p>
+            <% carretes_ = Carrete.where(user_id: current_user.id) %>
+            <%- carretes_.each do |carrete| %>
+              <%= carrete.nombre + "," %>
+            <%- end %>
+            </ol>
+            <ol type="1">
+            <p class="subtitle is-5">Carretes en los que ganaste Ticket:</p>
+            <% tickets = Ticket.where(user_id: current_user.id) %>
+            <% @carretes = [] %>
+            <% tickets.each { |ticket| 
+            if ticket.visto == false
+              ticket.update_attributes({:visto => true })
+            end
+            @carretes.push(Carrete.where(id: ticket.carrete_id).take) } %>
+            <%- @carretes.each do |carrete| %>
+              <%= carrete.nombre + "," %>
+            <%- end %>
+
+            </ol>
+            <ol type="1">
+            <p class="subtitle is-5">Servicios creados:</p>
+            <% servicios = Servicio.where(user_id: current_user.id) %>
+            <%- servicios.each do |servicios| %>
+              <%= servicios.nombre + "," %>
+            <%- end %>
+            </ol>
+            <br>
+        </div>
+    </div>
+    <button class="button"><%= link_to 'Mis Tickets',tickets_mostrar_path%></button> 
+  </div>
+</div>
+</body>
+ 

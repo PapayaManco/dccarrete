@@ -1,0 +1,23 @@
+<h1>Tickets</h1>
+<table>
+    <thead>
+      <tr>
+        <th>Carrete id</th>
+        <th>Usuario id</th>
+        <th>Visto</th>
+        <th>Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tickets.each do |ticket| %>
+        <tr>
+          <td><%= ticket.carrete_id %></td>
+          <td><%= ticket.user_id %></td>
+          <td><%= ticket.visto %></td>
+          <td><%= ticket.codigo %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+<br>

@@ -1,0 +1,58 @@
+<head>
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-brand">
+            <a class="navbar-item" href=<%=static_pages_home_url %>>
+            <img src="<%= asset_path 'dccarrete.png' %>" width="120">
+            </a>
+
+            <a class='navbar-item' href=<%=carretes_buscar_url %>>
+            Buscar Carretes
+            </a>
+
+            <a class='navbar-item' href=<%=servicios_buscar_url %>>
+            Buscar Servicios
+            </a>
+
+            <a class='navbar-item' href=<%=servicios_index_url %>>
+            Prestar Servicios
+            </a>
+            
+            <a class='navbar-item' href=<%=carretes_index_url %>>
+              Organizar Carrete
+            </a>
+            
+            <a class='navbar-item' href=<%=static_pages_perfil_url %>>
+              Mi Perfil 
+            </a>
+            
+          </div>
+        </div>
+
+         <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <% if current_user %>
+                <%= button_to "Cerrar sesión", destroy_user_session_path, method: :delete, data: { confirm: "Estás seguro de que quieres cerrar sesión?" }, class:"button is-danger"%>
+              <% else %>
+                <a class="button is-danger" href=<%=user_session_path %>>
+                <strong>Sign in</strong>
+                </a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </nav>
+</head>
+</html>

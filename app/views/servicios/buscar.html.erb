@@ -1,0 +1,124 @@
+<%= render "static_pages/layout" %>
+<head>
+  <title>Buscar Servicios</title>
+</head>
+
+<body>
+  <br>
+	<h1 class="title" align="center">Total Servicios</h1>
+  <br>
+  <br>
+  <h2 class="title" align="center">Comidas</h2>
+  
+  <div class="columns">
+    <div class="column">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Nombre">Nombre</abbr></th>
+            <th><abbr title="Descripción">Descripción</abbr></th>
+            <th><abbr title="Monto Minimo">Reseñas</abbr></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <%- Servicio.where(categoria: 'Comidas').each do |s|%>
+          <tr>
+            <td><%= s.nombre %></td>
+            <td><%= s.descripcion %></td>
+            <td><button class="button"><%= link_to 'Reseñas', reviews_mostrar_path(id:s.id) %></button></td>
+
+        </tr>
+          <%- end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+<h2 class="title" align="center">Bebidas</h2>
+<div class="columns">
+    <div class="column">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Nombre">Nombre</abbr></th>
+            <th><abbr title="Descripción">Descripción</abbr></th>
+            <th><abbr title="Monto Minimo">Reseñas</abbr></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <%- Servicio.where(categoria: 'Bebidas').each do |s|%>
+          <tr>
+            <td><%= s.nombre %></td>
+            <td><%= s.descripcion %></td>
+            <td><button class="button"><%= link_to 'Reseñas', reviews_mostrar_path(id:s.id) %></button></td>
+
+        </tr>
+          <%- end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+<h2 class="title" align="center">Música</h2>
+<div class="columns">
+    <div class="column">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Nombre">Nombre</abbr></th>
+            <th><abbr title="Descripción">Descripción</abbr></th>
+            <th><abbr title="Monto Minimo">Reseñas</abbr></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <%- Servicio.where(categoria: 'Música').each do |s|%>
+          <tr>
+            <td><%= s.nombre %></td>
+            <td><%= s.descripcion %></td>
+            <td><button class="button"><%= link_to 'Reseñas', reviews_mostrar_path(id:s.id) %></button></td>
+
+        </tr>
+          <%- end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+<h2 class="title" align="center">Limpieza</h2>
+<div class="columns">
+    <div class="column">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Nombre">Nombre</abbr></th>
+            <th><abbr title="Descripción">Descripción</abbr></th>
+            <th><abbr title="Monto Minimo">Reseñas</abbr></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <%- Servicio.where(categoria: 'Limpieza').each do |s|%>
+          <tr>
+            <td><%= s.nombre %></td>
+            <td><%= s.descripcion %></td>
+            <td><button class="button"><%= link_to 'Reseñas', reviews_mostrar_path(id:s.id) %></button></td>
+
+        </tr>
+          <%- end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+
+</body>

@@ -1,0 +1,16 @@
+<p id='notice'><%= notice %></p>
+
+<p>
+  <strong>Comuna:</strong>
+  <%= @comuna.comuna%>
+</p>
+
+<p>
+  <strong>Dirección:</strong>
+  <%= @comuna.cid%>
+</p>
+
+
+<%= link_to 'Volver al listado', comunas_index_path%>
+<%= link_to 'Editar carrete', comuna_edit_path%>
+<%= link_to 'Eliminar carrete', comuna_path, method: :delete %>

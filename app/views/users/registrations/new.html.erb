@@ -1,0 +1,53 @@
+<head>
+	<meta charset="utf-8">
+	<title>Login System</title>
+</head>
+
+<body>
+  <section class="hero is-dark is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="column is-4 is-offset-4">
+                  <h3 class="title">Registration</h3>
+                    <div class="box">
+                    
+                      <p class="help is-danger"><%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <%= render "users/shared/error_messages", resource: resource %></p>
+
+                        <div class="field">
+                          <%= f.label :email %><br />
+                          <div class="control">
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+                          </div>
+                        </div>
+
+                        <div class="field">
+                          <%= f.label :username %><br />
+                          <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "input" %>
+                        </div>
+
+                        <div class="field">
+                          <%= f.label :password %>
+                          <% if @minimum_password_length %>
+                          <em>(<%= @minimum_password_length %> characters minimum)</em>
+                          <% end %><br />
+                          <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+                        </div>
+
+                        <div class="field">
+                          <%= f.label :password_confirmation %><br />
+                          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
+                        </div>
+
+                        <div class="actions">
+                          <%= f.submit "Sign up" %>
+                        </div>
+                      <% end %>
+                  
+                      <%= render "users/shared/links" %>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

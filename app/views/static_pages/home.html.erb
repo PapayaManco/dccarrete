@@ -1,0 +1,113 @@
+<!--
+<% if current_user %>
+    <p> Hola, <%= current_user.email %> </p>
+    <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete %>
+<% else %>
+    <p> No estás conectad@ </p>
+    <%= link_to 'Registrarse', new_user_registration_path %>
+<% end %>
+-->
+<%= render "layout" %>
+<body>
+  <section class="hero background-img is-large" style="background-image: url(https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);">
+  	<div class="hero-body">
+        	<div class="container has-text-centered">
+        		<h1 class="title is-size-1 has-text-white">
+                    <% if current_user %>
+                        <p style="text-align:center;"> Hola, <%= current_user.username %> </p>
+                        <% @aviso = "Te ganaste el ticket para un Carrete!"
+                        noti = Ticket.where(user_id: current_user.id) %>
+                        <% if noti %>
+                         <% noti.each do  |ticket| %>
+                            <% if not ticket.visto %>  
+                                <%= @aviso  %>
+                                <%= link_to 'Ver en Perfil',static_pages_perfil_url%>
+                                <% break%>
+                            <% end %>                           
+                          <% end %>
+                        <% end %>    
+                        <br>
+                        <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete %>
+                    <% else %>
+                        <p> No estás conectad@ </p>
+                        <%= link_to 'Iniciar sesión',  new_user_session_path %>
+                    <% end %>
+  
+        		</h1>
+        	</div>
+        	
+        </div>
+	</section>
+
+	<section class="section">
+        <div class="container has-text-centered">
+            <h2 class="title">¿Estás list@ para tu próximo carrete?</h2>
+            <p>Porque nuestra meta es tu entretención, disponemos de una variada oferta de servicios que serán ideales para la próxima fiesta a la que asistas.</p>
+            <h2>Servicios destacados</h2>
+
+            <div class="columns is-centered" style="padding: 2rem">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-2by1">
+                                <img src="https://images.pexels.com/photos/332688/pexels-photo-332688.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Ofrece tus servicios</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                ¿Tienes un emprendimiento que busque clientes? Esta es la instancia perfecta para ofrecer tus servicios de música, coctelería, limpieza, y más!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-2by1">
+                                <img src="https://eltecolote.mx/wp-content/uploads/2019/07/124.jpg" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Busca tu carrete perfecto</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                ¿Hace tiempo esperas ir a una fista? <br>Te ofrecemos un amplio catálogo de carretes para todos los gustos!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-2by1">
+                                <img src="https://cdn.pixabay.com/photo/2015/05/31/13/45/young-791849__340.jpg" alt="Placeholder image" >
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Organiza tu carrete</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Atrévete a organizar tu propia fiesta! <br>Ofrécele los mejores servicios disponibles a todos tus invitados
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</body>

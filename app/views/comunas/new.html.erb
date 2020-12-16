@@ -1,0 +1,17 @@
+<h1>Nuevo Carrete</h1>
+
+<p> <%= notice%> </p>
+
+<%= form_with(model: @comuna, method: :post) do |form|%>
+
+    <div class='field'>
+        <%=form.label :comuna%>
+        <%=form.text_field :comuna%>
+    </div>
+
+    <div class='field'>
+        <%=form.label :cid%>
+        <%=form.text_field :cid%>
+    </div>
+
+<% end %>

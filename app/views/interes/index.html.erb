@@ -1,0 +1,24 @@
+<h1>Carretes Interesados</h1>
+
+<table>
+    <thead>
+      <tr>
+        <th>Carrete id</th>
+        <th>Usuario id</th>
+        <th>Monto</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @interes.each do |intere| %>
+        <tr>
+          <td><%= intere.carrete_id %></td>
+          <td><%= intere.user_id %></td>
+          <td><%= intere.monto %></td>
+          <td><%= link_to 'Ver Detalles', intere_path(intere.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+<br>

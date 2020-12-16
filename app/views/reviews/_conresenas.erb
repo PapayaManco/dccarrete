@@ -1,0 +1,29 @@
+<%= render "static_pages/layout" %>
+<br>
+	<h1 class="title" align="center">Reseña de <%= @review.servicio_id%></h1>
+	
+<div class="columns is-centered">
+	<div class="column has-text-centered">
+		<div class='box'>
+				<article class='media'>
+					<div class='media-content'>
+						<div class='content'>
+							<p>
+								<strong>Rating:</strong>
+								<%= @review.rating%>
+							</p>
+							<br>
+								<p>
+									<strong>Comentario:</strong>
+									<%= @review.comment%>
+								</p>
+							<br>
+						</div>
+					</div>
+				</article>    
+			<button class="button is-dark" onclick="location.href='<%=servicio_show_path(@servicio) %>'">Volver al servicio</button>
+			<button class="button is-dark" onclick="location.href='<%=review_edit_path(@servicio, @review) %>'">Editar reseña</button>
+			<button class="button is-dark" onclick="location.href='<%=review_path %>'">Eliminar reseña</button>
+		</div>
+  	</div>
+</div>

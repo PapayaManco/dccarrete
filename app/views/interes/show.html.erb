@@ -1,0 +1,20 @@
+<p id='notice'><%= notice %></p>
+
+<p>
+  <strong>Carrete Id:</strong>
+  <%= @intere.carrete_id%>
+</p>
+
+<p>
+  <strong>Usuario id:</strong>
+  <%= @intere.user_id%>
+</p>
+
+<p>
+  <strong>Monto ofrecido:</strong>
+  <%= @intere.monto%>
+</p>
+
+<%= link_to 'Volver al listado', interes_index_path%>
+<%= link_to 'Eliminar interes', intere_path, method: :delete %>
+<%= link_to 'Aceptar monto', tickets_new_path(@intere.id) %>

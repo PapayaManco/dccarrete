@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: moai
+  pool: 5
+
+production:
+  <<: *default
+  database: dccarrete_production
+
+development:
+  <<: *default
+  database: dccarrete_development
+
+test:
+  <<: *default
+  database: dccarrete_test

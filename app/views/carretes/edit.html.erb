@@ -1,0 +1,35 @@
+<%= render "static_pages/layout" %>
+
+<body>
+<br>
+	<h1 class="title" align="center">Editar carrete</h1>
+    <section class="section">
+
+    <p> <%= notice %> </p>
+
+    <%= form_with(model: @carrete, method: :patch, url: carrete_update_path(@carrete.id)) do |form| %>
+
+        <div class='field'>
+            <label class="label"><%=form.label :nombre%></label>
+            <div class="control">
+                <%=form.text_field :nombre, autofocus: true, autocomplete: "nombre", class: "input" %>
+            </div>
+        </div>
+
+        <div class='field'>
+            <label class="label"><%=form.label :direccion%></label>
+            <div class="control">
+                <%=form.text_field :direccion, autofocus: true, autocomplete: "direccion", class: "input" %>
+            </div>
+        </div>
+
+        <div class='field'>
+            <label class="label"><%=form.label :max_asistentes%></label>
+            <div class="control">
+                <%=form.number_field :max_asistentes, autofocus: true, autocomplete: "max_asistentes", class: "input" %>
+            </div>
+        </div>
+    <%end%>
+
+    </section>
+</body>

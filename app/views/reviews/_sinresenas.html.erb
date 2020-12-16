@@ -1,0 +1,43 @@
+<%= render "static_pages/layout" %>
+<br>
+	<h1 class="title" align="center">Nueva reseña</h1>
+<section class="section">
+    <p> <%= notice%> </p>
+
+    <p class="help is-danger"><%= form_with(model: @review, method: :post) do |form| %>
+        </p>
+
+            <div class="field">
+                <label class="label"><%= form.label :comment %></label>
+                <div class="control">
+                        <%= form.text_field :comment, autofocus: true, autocomplete: "comment", class: "input" %>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label"><%=form.label :rating%></label>
+                <div class="control">
+                    <div class="select">
+                        <%= form.select :rating, [1,2,3,4,5]%>
+                    </div>
+                </div>
+            </div>
+
+            <div class='field'>
+                <%=form.hidden_field :user_id, :value => current_user.id %>
+            </div>
+
+            <div class='field'>
+                <%=form.hidden_field :servicio_id, :value => params[:id] %>
+            </div>
+
+            <div class="field is-horizontal">
+            <div class="field-label">
+                
+            </div>
+            <div class='action'>
+                <%=form.submit%>
+            </div>
+            
+            <% end %>
+</section>

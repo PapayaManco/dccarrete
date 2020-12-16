@@ -1,0 +1,24 @@
+<%= render "static_pages/layout" %>
+
+<body>
+<br>
+	<h1 class="title" align="center">Editar Reseña</h1>
+
+</body>
+
+<p> <%= notice %> </p>
+
+<%= form_with(model: @review, method: :patch, url: review_update_path(@review.id)) do |form| %>
+
+
+    <div class='field'>
+        <%=form.label :rating%>
+        <%=form.number_field :rating%>
+    </div>
+
+    <div class='field'>
+        <%=form.label :comment%>
+        <%=form.text_field :comment%>
+    </div>
+
+<%end%>

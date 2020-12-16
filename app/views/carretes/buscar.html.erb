@@ -1,0 +1,38 @@
+<%= render "static_pages/layout" %>
+<head>
+  <title>Buscar Carretes</title>
+</head>
+
+<body>
+  <br>
+	<h1 class="title" align="center">Total Carretes</h1>
+  <div class="columns">
+    <div class="column">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Nombre">Nombre</abbr></th>
+            <th><abbr title="Direccion">Direccion</abbr></th>
+            <th><abbr title="Maximo Asistentes">Maximo Asistentes</abbr></th>
+            <th><abbr title="Monto Minimo">Monto Minimo</abbr></th>
+            <th><abbr title="Ver carrete">Ver carrete</abbr></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <%- @carretes.each do |s|%>
+          <tr>
+            <td><%= s.nombre %></td>
+            <td><%= s.direccion %></td>
+            <td><%= s.max_asistentes %></td>
+			<td><%= s.monto_minimo %></td>
+			<td><button class="button"><%= link_to 'Ver carrete', carrete_path(id:s.id) %></button></td>
+          </tr>
+          <%- end %>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</body>

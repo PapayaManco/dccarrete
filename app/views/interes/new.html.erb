@@ -1,0 +1,44 @@
+<%= render "static_pages/layout" %>
+
+<body>
+  <br>
+  <h1 class="title" align="center">Nuevo interes</h1>
+<section class="section">
+
+    <p> <%= notice%> </p>
+
+    <%= form_with(model: @intere, method: :post) do |form|%>
+        <div class='field'>
+            <%=form.hidden_field :carrete_id, :value => params[:format]%>
+        </div>
+
+        <div class='field'>
+            <%=form.hidden_field :user_id, :value => current_user.id %>
+        </div>
+    <%if params[:format] != nil %>
+        <% if Carrete.where(id: params[:format]).take.abierto == true %>
+            <div class='field'>
+                <label class="label"><%=form.label :monto%></label>
+                <div class="control">
+                    <%=form.number_field :monto, min: 0, class: "input" %>
+                </div>
+            </div>
+
+                <% if Intere.where(user_id: current_user.id, carrete_id: params[:format]).take %>
+                    <p> Ya apostaste a este carrete.</p>
+                <% elsif Carrete.where(user_id: current_user.id).take %>
+                    <p class="has-text-danger"> No puedes apostar en tu propio carrete.</p>
+                <% else %>
+                    <div class='action'>
+                        <%=form.submit%>
+                    </div>
+                    <% end %>
+        <% end %>
+        <% if Carrete.where(id: params[:format]).take.abierto == false %>
+            <p>Este carrete fue cerrado</p>
+        <% end %>
+    <% end %>
+    <% end %>
+
+</section>
+</body>

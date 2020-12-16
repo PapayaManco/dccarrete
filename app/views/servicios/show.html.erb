@@ -1,0 +1,74 @@
+<%= render "static_pages/layout" %>
+<br>
+	<h1 class="title" align="center">Información del servicio: <%= @servicio.nombre%> </h1>
+
+<div class="columns is-centered">
+		<div class="column has-text-centered">
+			<div class='box'>
+									<article class='media'>
+										<div class='media-content'>
+											<div class='content'>
+												<p>
+													<strong>Nombre:</strong>
+                          <%= @servicio.nombre%>
+												</p>
+                        <br>
+                        <p>
+													<strong>ID Servicio:</strong>
+                          <%= @servicio.id%>
+												</p>
+                        <br>
+                        <p>
+                          <strong>Descripcion:</strong>
+                          <%= @servicio.descripcion%>
+                        </p>
+                        <br>
+                        <p>
+                          <strong>Categoria:</strong>
+                          <%= @servicio.categoria%>
+                        </p>
+                        <br>
+                        <p>
+                          <% if @reviews.blank?%>
+                            <strong> Aún no hay reseñas para este servicio </strong>
+                            <%= link_to "Escribir reseña", new_review_path(@servicio), class: "btn btn-danger"%>
+                          <% else%>
+                            <% @reviews.each do |review|%>
+                              <% div class="reviews"%>
+                                <% review.rating.to_i_times do %>
+                              <span class="glyphicon glyphicon-star"></span>
+                              <% end %>
+                              <% review.blank_stars_to_i.times do %>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                              <% end %>
+                        </p>
+                        <br>
+											</div>
+										</div>
+									</article>
+                        
+      <button class="button is-dark" onclick="location.href='<%=servicios_index_path %>'">Volver al listado</button>
+      <button class="button is-dark" onclick="location.href='<%=servicio_edit_path %>'">Editar servicio</button>
+      <button class="button is-dark" onclick="location.href='<%=servicio_path %>'">Eliminar servicio</button>
+      <button class="button is-dark" onclick="location.href='<%=review_path %>'">Escribir una reseña</button>
+			</div>
+  	</div>
+	</div>
+<!--
+<p id='notice'><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @servicio.nombre%>
+</p>
+<p>
+  <strong>Descripcion:</strong>
+  <%= @servicio.descripcion%>
+</p>
+<p>
+  <strong>Categoria:</strong>
+  <%= @servicio.categoria%>
+</p>
+<%= link_to 'Volver al listado', servicios_index_path%>
+<%= link_to 'Editar servicio', servicio_edit_path%>
+<%= link_to 'Eliminar servicio', servicio_path, method: :delete %>-->

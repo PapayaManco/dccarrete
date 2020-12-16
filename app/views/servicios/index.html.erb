@@ -1,0 +1,58 @@
+<%= render "static_pages/layout" %>
+
+<body>
+  <br>
+	<h1 class="title" align="center">Prestar Servicios</h1>
+	
+  <section class="section">
+        <div class="container has-text-centered">
+            <div class="columns is-centered" style="padding: 2rem">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-2by1">
+                                <img src="https://images.pexels.com/photos/332688/pexels-photo-332688.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Postular un servicio</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                ¿Tienes un emprendimiento que busque clientes? Esta es la instancia perfecta para ofrecer tus servicios de música, coctelería, limpieza, y más!
+                            </div>
+                            <button class="button is-dark" onclick="location.href='<%=servicios_new_url %>'">Postular</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-2by1">
+                                <img src="https://cdn.pixabay.com/photo/2015/05/31/13/45/young-791849__340.jpg" alt="Placeholder image" >
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Mis servicios ofrecidos</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Revisa tus servicios! <br>Actualiza o modifica tu oferta para que tus clientes queden satisfechos!
+                            </div>
+                            <button class="button is-dark" onclick="location.href='<%=servicios_mostrar_url %>'">Mis sevicios</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+
+</body>

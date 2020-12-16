@@ -1,0 +1,58 @@
+<%= render "static_pages/layout" %>
+
+<body>
+  <br>
+	<h1 class="title" align="center">Interesados para el carrete <%= Carrete.where(id: params[:id]).take.nombre%> </h1>
+  <div class="columns">
+    <div class="column">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Nombre">Nombre</abbr></th>
+            <th><abbr title="Direccion">Monto apostado</abbr></th>
+            <% top = [] %>
+            <% Intere.select(:monto).where(carrete_id: params[:id]).order('monto desc').limit(Carrete.where(id: params[:id]).take.max_asistentes).each {|n| top.push(n.monto)} %>
+            <% top %>
+          </tr>
+        </thead>
+        
+        <tbody>
+          
+          <%- Intere.where(carrete_id: params[:id]).each do |s|%>
+            <tr>
+            <td><%= User.where(id: s.user_id).take.username %></td>
+            <td><%= s.monto %></td>
+          </tr>
+          <%- end %>
+          <td>Monto minimo: <%= Carrete.where(id: params[:id]).take.monto_minimo%></td>
+          <td>Recaudado:<%= top.sum %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% ids_top = []%>
+  <% Intere.where(carrete_id: params[:id]).order('monto desc').limit(Carrete.where(id: params[:id]).take.max_asistentes).each {|n| ids_top.push(n.user_id)} %>
+  <% ids_top%>
+  <%if params[:state] == 'false' %>
+  <% Carrete.where(id: params[:id]).take.update_attributes({:abierto => false })%>       
+  <% end %>
+  <% min = Carrete.where(id: params[:id]).take.monto_minimo %>
+  <% actual = top.sum%>
+  <% if  (Carrete.where(id: params[:id]).take.abierto == true && actual >= min) %>
+    <button class="button"><%= link_to 'Cerrar Carrete',carretes_interesados_path(id: params[:id],state: false)%></button> 
+
+  <% elsif (Carrete.where(id: params[:id]).take.abierto == true && actual <= min) %>
+    <%='Para poder cerrar el carrete es necesario que se llegue a la meta de dinero.' %>
+    
+  <% else %>
+  <%= 'Carrete cerrado' %>
+  <br>
+    <%if Ticket.where(carrete_id: params[:id]).take == nil %>  
+      <button class="button"><%= link_to 'Enviar Tickets',carretes_interesados_path(id: params[:id],state: false,ticket: true)%></button> 
+      <%if params[:ticket] == 'true'%>  
+      <% ids_top.each { |id| Ticket.create :user_id => id,:carrete_id => params[:id]} %>
+      <%end%>
+      <% end %>
+    <% end %>
+</body>

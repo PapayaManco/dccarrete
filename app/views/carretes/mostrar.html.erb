@@ -1,0 +1,33 @@
+<%= render "static_pages/layout" %>
+
+<body>
+  <br>
+	<h1 class="title" align="center">Mis Carretes</h1>
+  <div class="columns">
+    <div class="column">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Nombre">Nombre</abbr></th>
+            <th><abbr title="Direccion">Direccion</abbr></th>
+            <th><abbr title="Maximo Asistentes">Maximo Asistentes</abbr></th>
+            <th><abbr title="Ver Apostadores"></abbr></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <%- Carrete.where(user_id: current_user.id).each do |s|%>
+          <tr>
+            <td><%= s.nombre %></td>
+            <td><%= s.direccion %></td>
+            <td><%= s.max_asistentes %></td>
+            <td><button class="button"><%= link_to 'Interesados', carretes_interesados_path(id:s.id) %></button></td>
+          </tr>
+          <%- end %>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</body>

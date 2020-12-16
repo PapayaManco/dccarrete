@@ -1,0 +1,30 @@
+<%= render "static_pages/layout" %>
+
+<body>
+  <br>
+	<h1 class="title" align="center">Reseñas del servicio</h1>
+  <div class="columns">
+    <div class="column">
+
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Rating">Rating</abbr></th>
+            <th><abbr title="Comentario">Comment</abbr></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <%- Review.where(servicio_id: params[:id]).each do |s|%>
+          <tr>
+            <td><%= s.rating %></td>
+            <td><%= s.comment %></td>
+            </td>
+          </tr>
+          <%- end %>
+        </tbody>
+      </table>
+      <button class="button"><%= link_to 'Escribir Reseña', reviews_new_path(id: params[:id]) %></button>
+    </div>
+  </div>
+</body>
